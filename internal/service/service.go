@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/merlex/otus-image-previewer/internal/model"
+	"github.com/merlex/otus_golang_final_project/internal/model"
 )
 
 type ImageService interface {

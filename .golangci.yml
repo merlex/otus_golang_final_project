@@ -21,13 +21,13 @@ linters-settings:
           - github.com/gorilla/mux
           - github.com/disintegration/imaging
           - github.com/cucumber/godog
-          - github.com/merlex/otus-image-previewer/internal/config
-          - github.com/merlex/otus-image-previewer/internal/http
-          - github.com/merlex/otus-image-previewer/internal/logger
-          - github.com/merlex/otus-image-previewer/internal/lru
-          - github.com/merlex/otus-image-previewer/internal/model
-          - github.com/merlex/otus-image-previewer/internal/service
-          - github.com/merlex/otus-image-previewer/internal/util
+          - github.com/merlex/otus_golang_final_project/internal/config
+          - github.com/merlex/otus_golang_final_project/internal/http
+          - github.com/merlex/otus_golang_final_project/internal/logger
+          - github.com/merlex/otus_golang_final_project/internal/lru
+          - github.com/merlex/otus_golang_final_project/internal/model
+          - github.com/merlex/otus_golang_final_project/internal/service
+          - github.com/merlex/otus_golang_final_project/internal/util
 
 linters:
   disable-all: true

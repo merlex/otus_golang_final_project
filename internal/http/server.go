@@ -7,10 +7,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gorilla/mux"
-	"github.com/merlex/otus-image-previewer/internal/config"
-	"github.com/merlex/otus-image-previewer/internal/logger"
-	"github.com/merlex/otus-image-previewer/internal/service"
+	"github.com/merlex/otus_golang_final_project/internal/config"
+	"github.com/merlex/otus_golang_final_project/internal/logger"
+	"github.com/merlex/otus_golang_final_project/internal/service"
 )
 
 type Server struct {
@@ -31,12 +30,12 @@ func NewServer(ctx context.Context, logger *logger.Logger, conf *config.HTTPServ
 func (s *Server) Start(ctx context.Context) {
 	h := NewProxyHandler(ctx, s.log, s.service)
 
-	r := mux.NewRouter().UseEncodedPath()
-	r.Path("/").HandlerFunc(h.hellowHandler)
-	r.PathPrefix("/fill/").Handler(http.StripPrefix("/fill/", h))
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", h.hellowHandler)
+	mux.Handle("/fill/", http.StripPrefix("/fill/", h))
 	server := &http.Server{
 		Addr:              strings.Join([]string{s.ip, s.port}, ":"),
-		Handler:           r,
+		Handler:           mux,
 		ReadHeaderTimeout: 10 * time.Second,
 	}
 	s.srv = server

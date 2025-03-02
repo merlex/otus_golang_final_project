@@ -11,10 +11,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/merlex/otus-image-previewer/internal/logger"
-	"github.com/merlex/otus-image-previewer/internal/model"
-	"github.com/merlex/otus-image-previewer/internal/service"
-	"github.com/merlex/otus-image-previewer/internal/util"
+	"github.com/merlex/otus_golang_final_project/internal/logger"
+	"github.com/merlex/otus_golang_final_project/internal/model"
+	"github.com/merlex/otus_golang_final_project/internal/service"
+	"github.com/merlex/otus_golang_final_project/internal/util"
 	"golang.org/x/sync/singleflight"
 )
 
@@ -42,7 +42,7 @@ func NewProxyHandler(ctx context.Context, logger *logger.Logger, service service
 	}
 }
 
-func (p *ProxyHandler) hellowHandler(w http.ResponseWriter, r *http.Request) {
+func (p *ProxyHandler) hellowHandler(w http.ResponseWriter, _ *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	_, err := w.Write([]byte("This is image previewer service!"))
 	if err != nil {
@@ -126,7 +126,8 @@ func (p *ProxyHandler) sendResponse(w http.ResponseWriter, response []byte, head
 
 func (p *ProxyHandler) proxyRequest(r *http.Request, path string) (*proxyResponse, error) {
 	targetURL := util.HTTP + path
-	reqCtx, cancel := context.WithTimeout(p.ctx, 5*time.Hour)
+	const timeout = 5 * time.Second
+	reqCtx, cancel := context.WithTimeout(p.ctx, timeout)
 	defer cancel()
 	proxyReq, err := http.NewRequestWithContext(reqCtx, r.Method, targetURL, nil)
 	if err != nil {

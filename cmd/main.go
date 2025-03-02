@@ -10,10 +10,10 @@ import (
 	"sync"
 	"syscall"
 
-	"github.com/merlex/otus-image-previewer/internal/config"
-	"github.com/merlex/otus-image-previewer/internal/http"
-	"github.com/merlex/otus-image-previewer/internal/logger"
-	srv "github.com/merlex/otus-image-previewer/internal/service"
+	"github.com/merlex/otus_golang_final_project/internal/config"
+	"github.com/merlex/otus_golang_final_project/internal/http"
+	"github.com/merlex/otus_golang_final_project/internal/logger"
+	srv "github.com/merlex/otus_golang_final_project/internal/service"
 )
 
 var (
@@ -41,9 +41,9 @@ func main() {
 		defer file.Close()
 
 		if cfg.Logger.LogToConsole {
-			w = file
-		} else {
 			w = io.MultiWriter(file, os.Stdout)
+		} else {
+			w = file
 		}
 	} else {
 		w = os.Stdout

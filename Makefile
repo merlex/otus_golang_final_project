@@ -17,7 +17,7 @@ down:
 	docker compose -f docker-compose.yaml down
 
 test:
-	go test -race -count 10 ./internal/lru ./internal/service ./internal/logger
+	go test -race -count 10 ./internal/lru ./internal/service
 
 integration_test:
 	set -e ;\

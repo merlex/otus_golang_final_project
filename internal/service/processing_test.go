@@ -5,9 +5,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/merlex/otus-image-previewer/internal/config"
-	"github.com/merlex/otus-image-previewer/internal/logger"
-	"github.com/merlex/otus-image-previewer/internal/util"
+	"github.com/merlex/otus_golang_final_project/internal/config"
+	"github.com/merlex/otus_golang_final_project/internal/logger"
+	"github.com/merlex/otus_golang_final_project/internal/util"
 	"github.com/stretchr/testify/require"
 )
 

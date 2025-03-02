@@ -12,11 +12,11 @@ import (
 	"strings"
 
 	"github.com/disintegration/imaging"
-	"github.com/merlex/otus-image-previewer/internal/config"
-	"github.com/merlex/otus-image-previewer/internal/logger"
-	"github.com/merlex/otus-image-previewer/internal/lru"
-	"github.com/merlex/otus-image-previewer/internal/model"
-	"github.com/merlex/otus-image-previewer/internal/util"
+	"github.com/merlex/otus_golang_final_project/internal/config"
+	"github.com/merlex/otus_golang_final_project/internal/logger"
+	"github.com/merlex/otus_golang_final_project/internal/lru"
+	"github.com/merlex/otus_golang_final_project/internal/model"
+	"github.com/merlex/otus_golang_final_project/internal/util"
 )
 
 type ImageProcessingService struct {
