@@ -1,0 +1,29 @@
+networks:
+  app:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.11.16/28
+
+services:
+  previewer:
+    build:
+      context: ./
+      dockerfile: ./build/Dockerfile
+    restart: on-failure
+    ports:
+      - "8585:8585"
+    expose:
+      - 8585
+    environment:
+      LOGGER_LEVEL: info
+      LOGGER_FORMAT: json
+      LOGGER_FILE: "/opt/previewer/previewer.log"
+      LOGGER_LOG_TO_FILE: false
+      LOGGER_LOG_TO_CONSOLE: true
+      CACHE_DIR: "/tmp/"
+      CACHE_CAPACITY: "10"
+      HTTP_IP: 0.0.0.0
+      HTTP_PORT: 8585
+    networks:
+      - app
